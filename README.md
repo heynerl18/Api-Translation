@@ -10,9 +10,8 @@ Sigue estos pasos para configurar y levantar el proyecto en tu entorno local:
    ```bash
    git clone https://github.com/tu_usuario/tu_repositorio.git
 
-Navega a la carpeta del proyecto:
 
-2. cd tu_repositorio
+2. Navega a la carpeta del proyecto:
   cd tu_repositorio
 
 3. Instala las dependencias:
@@ -37,6 +36,5 @@ Navega a la carpeta del proyecto:
   `php artisan db:seed --class=NombreDelSeeder`
 
 9. Inicia el servidor de desarrollo:
-
-`php artisan serve`
+  `php artisan serve`
 

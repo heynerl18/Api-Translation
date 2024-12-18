@@ -4,7 +4,6 @@
 Este proyecto implementa la lógica de respaldo para la gestión de traducciones dinámicas en diferentes idiomas y regiones.  
 
 ### Migraciones y Sembradores  
-Recibirás archivos de migración y sembradores (seeders) para las tablas:
 - **locales**: Un "locale" representa una combinación de idioma y región utilizada para las traducciones. Ejemplo: es-es representa el español hablado en España y es-cr representa el español hablado en Costa Rica.
 - **projects**: Tabla que almacena información sobre los proyectos.  
 - **tokens**: Tabla que define los tokens que necesitan ser traducidos.  

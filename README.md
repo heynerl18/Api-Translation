@@ -13,30 +13,16 @@ Recibirás archivos de migración y sembradores (seeders) para las tablas:
 ### Flujo de Traducciones  
 Cuando se realiza una solicitud de traducción para un locale específico dentro de un proyecto:  
 1. **Traducción disponible para el locale solicitado:**  
-   - Si la traducción existe, devolverla.  
+   - Si la traducción existe, se devuelve.  
 2. **Traducción no disponible para el locale solicitado:**  
-   - Si el locale solicitado no está disponible, devolver la traducción del locale predeterminado (`es-es`).  
+   - Si el locale solicitado no está disponible, se devuelve la traducción del locale predeterminado (`es-es`).  
 3. **Sin traducciones disponibles:**  
-   - Si ni el locale solicitado ni el predeterminado existen, devolver una respuesta de error con el mensaje:  
+   - Si ni el locale solicitado ni el predeterminado existen, se devuelve una respuesta de error con el mensaje:  
      ```
      Translation not available.
      ```  
 
-## Endpoint de la API  
-Implementar un endpoint de API que permita gestionar las traducciones.  
 
-### Parámetros del Endpoint  
-El endpoint debe recibir los siguientes parámetros:  
-- `project_id`: ID del proyecto.  
-- `token_id`: ID del token.  
-- `locale`: Código del locale.  
-
-### Comportamiento del Endpoint  
-1. **Devolver traducción para el locale solicitado:**  
-   - Si la traducción existe para el token y locale especificados dentro del proyecto, devolverla.  
-2. **Devolver traducción del locale predeterminado (`es-es`):**  
-   - Si la traducción para el locale solicitado no existe, devolver la traducción del locale predeterminado.  
-3. **Devolver mensaje de error:**  
    - Si no existe ninguna traducción (ni para el locale solicitado ni para el predeterminado), devolver el mensaje:  
      ```
      Translation not available.

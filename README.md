@@ -1,40 +1,43 @@
-# LandSys
+# LangSys Back-End Laravel  
 
-Se emplea Query Builder para la interacción con las tablas.
+## Lógica de Respaldo  
+Este proyecto implementa la lógica de respaldo para la gestión de traducciones dinámicas en diferentes idiomas y regiones.  
 
-## Pasos para Levantar el Proyecto
+### Migraciones y Sembradores  
+Recibirás archivos de migración y sembradores (seeders) para las tablas:
+- **locales**: Un "locale" representa una combinación de idioma y región utilizada para las traducciones. Ejemplo: es-es representa el español hablado en España y es-cr representa el español hablado en Costa Rica.
+- **projects**: Tabla que almacena información sobre los proyectos.  
+- **tokens**: Tabla que define los tokens que necesitan ser traducidos.  
+- **translations**: Tabla que contiene las traducciones en diferentes locales.  
 
-Sigue estos pasos para configurar y levantar el proyecto en tu entorno local:
+### Flujo de Traducciones  
+Cuando se realiza una solicitud de traducción para un locale específico dentro de un proyecto:  
+1. **Traducción disponible para el locale solicitado:**  
+   - Si la traducción existe, devolverla.  
+2. **Traducción no disponible para el locale solicitado:**  
+   - Si el locale solicitado no está disponible, devolver la traducción del locale predeterminado (`es-es`).  
+3. **Sin traducciones disponibles:**  
+   - Si ni el locale solicitado ni el predeterminado existen, devolver una respuesta de error con el mensaje:  
+     ```
+     Translation not available.
+     ```  
 
-1. **Clona el repositorio**:
-   ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
+## Endpoint de la API  
+Implementar un endpoint de API que permita gestionar las traducciones.  
 
+### Parámetros del Endpoint  
+El endpoint debe recibir los siguientes parámetros:  
+- `project_id`: ID del proyecto.  
+- `token_id`: ID del token.  
+- `locale`: Código del locale.  
 
-2. Navega a la carpeta del proyecto:
-  cd tu_repositorio
-
-3. Instala las dependencias:
-  `composer install`
-
-4. Copia el archivo de configuración del entorno:
-  `cp .env.example .env`
-
-5. Configura tu archivo .env:
-
-  Ajusta la configuración de la base de datos y otras variables según tus necesidades.
-
-6. Genera la clave de la aplicación:
-  `php artisan key:generate`
-
-7. Ejecuta las migraciones:
-
-  Ejecutar todas las migraciones a la vez:
-  `php artisan migrate`
-
-8. Ejecutar los seeders uno por uno
-  `php artisan db:seed --class=NombreDelSeeder`
-
-9. Inicia el servidor de desarrollo:
-  `php artisan serve`
-
+### Comportamiento del Endpoint  
+1. **Devolver traducción para el locale solicitado:**  
+   - Si la traducción existe para el token y locale especificados dentro del proyecto, devolverla.  
+2. **Devolver traducción del locale predeterminado (`es-es`):**  
+   - Si la traducción para el locale solicitado no existe, devolver la traducción del locale predeterminado.  
+3. **Devolver mensaje de error:**  
+   - Si no existe ninguna traducción (ni para el locale solicitado ni para el predeterminado), devolver el mensaje:  
+     ```
+     Translation not available.
+     ```  

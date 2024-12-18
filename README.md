@@ -1,6 +1,6 @@
 # LangSys Back-End Laravel  
 
-## Lógica de Respaldo  
+## Lógica  
 Este proyecto implementa la lógica de respaldo para la gestión de traducciones dinámicas en diferentes idiomas y regiones.  
 
 ### Migraciones y Sembradores  
